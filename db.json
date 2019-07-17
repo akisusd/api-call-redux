@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "xbox",
+      "brand": "microsoft"
+    },
+    {
+      "title": "switch",
+      "brand": "nintendo",
+      "id": 2
+    },
+    {
+      "title": "blade",
+      "brand": "razer",
+      "id": 3
+    }
+  ],
+  "test": [
+    {
+      "title": "foo",
+      "body": "bar",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "title": "foo",
+      "body": "bar",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "title": "foo",
+      "body": "bar",
+      "userId": 1,
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "asdf comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
