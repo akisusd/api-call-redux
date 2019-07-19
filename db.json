@@ -3,17 +3,42 @@
     {
       "id": 1,
       "title": "xbox",
-      "brand": "microsoft"
+      "brand": "microsoft",
+      "price": 500,
+      "inventory": 7,
+      "url": "https://compass-ssl.xbox.com/assets/05/b0/05b01a46-58eb-4927-ad21-3c43b545ebaf.jpg?n=X1S-2019_Panes-2-Up-1084_111_570x400.jpg"
     },
     {
       "title": "switch",
       "brand": "nintendo",
-      "id": 2
+      "id": 2,
+      "price": 300,
+      "inventory": 33,
+      "url": "https://static-ca.ebgames.ca/images/products/729000/3max.jpg"
     },
     {
       "title": "blade",
       "brand": "razer",
-      "id": 3
+      "id": 3,
+      "price": 1500,
+      "inventory": 9,
+      "url": "https://icdn2.digitaltrends.com/image/razer-blade-2019-review-feat.jpg"
+    },
+    {
+      "title": "ipad",
+      "brand": "appl",
+      "inventory": 4,
+      "price": 400,
+      "id": 5,
+      "url": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-wifi-spacegray-201810"
+    },
+    {
+      "title": "asdfttetetet",
+      "brand": "asdf",
+      "inventory": 123,
+      "price": 23,
+      "url": "",
+      "id": 6
     }
   ],
   "test": [

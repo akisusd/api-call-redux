@@ -1,87 +1,22 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
-import Picker from '../components/Picker'
-import Posts from '../components/Posts'
+import React from 'react'
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
-class App extends Component {
-  static propTypes = {
-    selectedSubreddit: PropTypes.string.isRequired,
-    posts: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    lastUpdated: PropTypes.number,
-    dispatch: PropTypes.func.isRequired
-  }
+import {Home} from '../pages/home'
+import {Cart} from '../pages/cart'
+import {Product} from '../pages/product'
+import ViewProductContainer from '../pages/viewProduct'
+import {Header} from '../components/header'
 
-  componentDidMount() {
-    const { dispatch, selectedSubreddit } = this.props
-    dispatch(fetchPostsIfNeeded(selectedSubreddit))
-  }
+const App = () => (
+  <div>
+    <Router>
+      <Header />
+      <Route exact path="/" component={Home} />
+      <Route path="/product" component={Product} />
+      <Route path="/viewproduct" component={ViewProductContainer} />
+      <Route path="/cart" component={Cart} />
+    </Router>
+  </div>
+)
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.selectedSubreddit !== this.props.selectedSubreddit) {
-      const { dispatch, selectedSubreddit } = this.props
-      dispatch(fetchPostsIfNeeded(selectedSubreddit))
-    }
-  }
-
-  handleChange = nextSubreddit => {
-    this.props.dispatch(selectSubreddit(nextSubreddit))
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-  }
-
-  render() {
-    const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
-    const isEmpty = posts.length === 0
-    return (
-      <div>
-        <Picker value={selectedSubreddit}
-                onSubmit={this.handleChange} />
-        <p>
-          {lastUpdated &&
-            <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-              {' '}
-            </span>
-          }
-          {!isFetching &&
-            <button onClick={this.handleRefreshClick}>
-              Refresh
-            </button>
-          }
-        </p>
-        {isEmpty
-          ? (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-          : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-              <Posts posts={posts} />
-            </div>
-        }
-      </div>
-    )
-  }
-}
-
-const mapStateToProps = state => {
-  const { selectedSubreddit, postsBySubreddit } = state
-  const {
-    isFetching,
-    lastUpdated,
-    items: posts
-  } = postsBySubreddit[selectedSubreddit] || {
-    isFetching: true,
-    items: []
-  }
-
-  return {
-    selectedSubreddit,
-    posts,
-    isFetching,
-    lastUpdated
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App
